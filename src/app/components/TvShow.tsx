@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
 import SearchInputs from './SearchShows';
 import Loading from './Loading';
+import { useSelector } from 'react-redux';
+import ShowListItem from './ShowListItem';
 
 const Container = styled.div`
 
@@ -22,7 +23,14 @@ const HeaderText = styled.h1`
   color: #F6A951;
 `
 
+const ListContainer = styled.div`
+
+`
+
 function TvShow() {
+  const shows = useSelector((state: any) => state.content.shows);
+  const loading = useSelector((state: any) => state.content.loading);
+
   return (
     <Container>
         <Header>
@@ -31,7 +39,14 @@ function TvShow() {
           </div>
         </Header>
         <SearchInputs />
-        <Loading />
+          {loading ?
+           <Loading /> : 
+           <ListContainer>
+              {shows.map((show:any, index:any) => (
+                <ShowListItem key={index} show={show} />
+              ))}
+           </ListContainer>
+          }
     </Container>
   )
 }

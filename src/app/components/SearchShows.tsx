@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { setShows, shows } from '../redux/ShowsSlice';
+import { setShows, setLoading } from '../redux/ShowsSlice';
 import axios from 'axios';
 
 const InputContainer = styled.div`
@@ -20,6 +20,9 @@ const SearchInput = styled.input`
   border: 1px solid #000;
   padding: 0;
   outline: none;
+  &&::placeholder{
+    padding: 10px;
+  }
 `
 
 const SearchButton = styled.button`
@@ -35,14 +38,14 @@ const SearchButton = styled.button`
 
 function SearchShows() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [showList, setShowList] = useState([]);
-  const shows = useSelector((state: any) => state.content.shows);
   const dispatch = useDispatch();
+  const loading = useSelector((state: any) => state.content.loading);
   
   const handleSearch = async (searchTerm:any) => {
+    dispatch(setLoading(true));
     const { data } = await axios.get(`http://api.tvmaze.com/search/shows?q=${searchTerm}`);
     dispatch(setShows(data));
-    console.log(shows.show);
+    dispatch(setLoading(false));
   }
 
   return (

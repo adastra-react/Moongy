@@ -1,8 +1,19 @@
-import React from 'react'
+import styled from 'styled-components';
 
-function ShowListItem() {
+interface Props {
+  show: any;
+}
+
+const Container = styled.div`
+    
+`
+
+function ShowListItem(show: Props) {
+  console.log(show)
   return (
-    <div>ShowListItem</div>
+    <div>
+        
+    </div>
   )
 }
 
