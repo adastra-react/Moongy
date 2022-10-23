@@ -3,20 +3,34 @@ import SearchInputs from './SearchShows';
 import Loading from './Loading';
 import { useSelector } from 'react-redux';
 import ShowListItem from './ShowListItem';
-import { styled as materialStyled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 
 const Container = styled.div`
   
 `
 
 const CardContainer = styled.div`
-    background-color: #f5f5f5;
     max-width: 1170px;
     width: 100%;
     margin: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+
+    @media (max-width: 1183px) {
+      grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 941px) {
+      grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 711px) {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 472px) {
+      grid-template-columns: repeat(1, .5fr);
+  }
 `
 
 const Header = styled.div`
@@ -36,7 +50,6 @@ const HeaderText = styled.h1`
 
 const ListContainer = styled.div`
   display: flex;
-  /* flex-direction: column; */
   max-width: 100%;
   align-items: center;
   justify-content: center;
@@ -59,10 +72,9 @@ function TvShow() {
            <Loading /> :
            <ListContainer>
               <CardContainer>
-
-              {shows?.map((show:any, index:any) => (
-                <ShowListItem key={index} show={show} />
-              ))}
+                {shows?.map((show:any, index:any) => (
+                  <ShowListItem key={index} show={show} />
+                ))}
               </CardContainer>
            </ListContainer>
           }

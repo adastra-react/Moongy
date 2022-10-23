@@ -13,13 +13,17 @@ const InputContainer = styled.div`
   height: 160px;
 `
 
-const SearchInput = styled.input`
+const SearchInput = styled.input.attrs({
+  type: 'text',
+  placeholder: 'Search for a TV show',
+})`
   height:  45px;
   width: 100%;
   max-width: 1170px;
   border: 1px solid #000;
   padding: 0;
   outline: none;
+  text-align: center;
   &&::placeholder{
     padding: 10px;
   }
@@ -51,9 +55,7 @@ function SearchShows() {
   return (
     <div>
         <InputContainer>
-            <SearchInput 
-              type="text" 
-              placeholder="Search for a TV show" 
+            <SearchInput
               value={searchTerm}
               onChange={(e:any) => setSearchTerm(e.target.value)}
             />
