@@ -1,5 +1,2 @@
 declare module 'styled-components'
-declare module 'redux-persist'
-declare module 'redux-persist/lib/storage'
 declare module 'react-redux'
-declare module 'redux-persist/integration/react'
