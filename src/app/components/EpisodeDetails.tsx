@@ -77,6 +77,10 @@ const EpisodeImage = styled.img`
 const SummaryContainer = styled.div`
   overflow: scroll;
   width: 100%;
+
+  > div{
+    margin: 20px;
+  }
 `
 
 const EpisodeTextContainer = styled.div`
