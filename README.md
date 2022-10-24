@@ -10,7 +10,7 @@ An application used to fetch and displaty searched movies using the TVMaze API.
 
 #### Example:  
 
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+Clone this repository. You will need `node` and `npm` installed globally on your machine.  
 
 Installation:
 
