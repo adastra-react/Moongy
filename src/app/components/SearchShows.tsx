@@ -43,10 +43,14 @@ const SearchButton = styled.button`
 function SearchShows() {
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
+
+  //////////////////////////
+  // Search for a TV show //
+  //////////////////////////
   
   const handleSearch = async (searchTerm:any) => {
     dispatch(setLoading(true));
-    const { data } = await axios.get(`http://api.tvmaze.com/search/shows?q=${searchTerm}`);
+    const { data } = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`);
     dispatch(setShows(data));
     dispatch(setLoading(false));
   }

@@ -1,6 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import contentReducer from "./ShowsSlice";
 
+///////////////////////
+// Setup redux store //
+///////////////////////
+
 const store = configureStore({
     reducer: {
         content: contentReducer

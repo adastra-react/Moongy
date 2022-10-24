@@ -103,6 +103,10 @@ function EpisodeDetails() {
     navigate(-1);
   }
 
+  //////////////////////////////////////////////
+  // Get shows episodes by is from URL params //
+  //////////////////////////////////////////////
+
   useEffect(() => {
     axios.get(`https://api.tvmaze.com/episodes/${episodeId}`)
     .then((response) => {
@@ -128,10 +132,10 @@ function EpisodeDetails() {
                 <DetailsContainer>
                   <EpisodeTextContainer>
                   <EpisodeImage src={episode?.image?.medium} />
-                    <h1>{episode?.name}</h1>
+                    <h1 data-testid="episodeName" >{episode?.name}</h1>
                   </EpisodeTextContainer>
                   <SummaryContainer>
-                      <div dangerouslySetInnerHTML={{__html: episode.summary}}></div>
+                      <div data-testid="episodeSummary" dangerouslySetInnerHTML={{__html: episode.summary}}></div>
                   </SummaryContainer>
                 </DetailsContainer>
             </EpisodeContainer>

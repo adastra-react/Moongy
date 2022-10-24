@@ -14,6 +14,10 @@ const initialState: ShowsState = {
     episodesLoading: false
 }
 
+///////////////////////////
+// Setup from redux Slice//
+///////////////////////////
+
 export const ShowsSlice = createSlice({
     name: 'content',
     initialState,
@@ -32,6 +36,10 @@ export const ShowsSlice = createSlice({
         }
     }
 });
+
+//////////////////////////////////
+//Export the actions and states///
+//////////////////////////////////
 
 export const { setShows } = ShowsSlice.actions;
 export const { setLoading } = ShowsSlice.actions;

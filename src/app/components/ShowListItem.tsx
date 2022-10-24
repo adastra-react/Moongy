@@ -25,6 +25,10 @@ interface FadeProps {
   onExited?: () => {};
 }
 
+//////////////////////////
+// Modal animation code //
+//////////////////////////
+
 const Fade = React.forwardRef<HTMLDivElement, FadeProps>(function Fade(props, ref) {
   const { in: open, children, onEnter, onExited, ...other } = props;
   const style = useSpring({
@@ -41,6 +45,10 @@ const Fade = React.forwardRef<HTMLDivElement, FadeProps>(function Fade(props, re
       }
     },
   });
+
+  //////////////////////////
+  // Modal animation code //
+  //////////////////////////
 
   return (
     <animated.div ref={ref} style={style} {...other}>
@@ -89,9 +97,12 @@ function ShowListItem(show: Props) {
 
   const dispatch = useDispatch();
 
+  /////////////////////////////
+  // Get episodes for a show //
+  /////////////////////////////
   const handleGetAllEpisodes = async () => {
     dispatch(setEpisodesLoading(true));
-    const { data } = await axios.get(`http://api.tvmaze.com/shows/${show?.show?.show?.id}/episodes`);
+    const { data } = await axios.get(`https://api.tvmaze.com/shows/${show?.show?.show?.id}/episodes`);
     dispatch(setEpisodes(data));
     dispatch(setEpisodesLoading(false));
   }
