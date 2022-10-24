@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import EpisodeCard from './EpisodeCard';
+import LoadingAnimation from './Loading'
 
 const Container = styled.div`
     width: 400px;   
@@ -17,12 +18,16 @@ const Container = styled.div`
 
 function TvShowEpisodes() {
     const episodes = useSelector((state: any) => state.content.episodes);
+    const episodesLoading = useSelector((state: any) => state.content.episodesLoading);
     
   return (
     <Container>
-        {episodes?.map((episode:any, index:any) => (
-            <EpisodeCard key={index} episode={episode} />
-        ))}
+        {episodesLoading ? <LoadingAnimation /> : 
+            episodes?.map((episode:any, index:any) => (
+                <EpisodeCard key={index} episode={episode} />
+            ))
+        }
+       
     </Container>
   )
 }

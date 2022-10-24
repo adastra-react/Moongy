@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setShows, setLoading } from '../redux/ShowsSlice';
 import axios from 'axios';
 
@@ -43,7 +43,6 @@ const SearchButton = styled.button`
 function SearchShows() {
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
-  const loading = useSelector((state: any) => state.content.loading);
   
   const handleSearch = async (searchTerm:any) => {
     dispatch(setLoading(true));

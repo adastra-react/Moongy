@@ -112,7 +112,7 @@ function EpisodeDetails() {
     .catch((error) => {
       console.log(error);
     })
-  }, [])
+  }, [episodeId])
 
   return (
     <Container>

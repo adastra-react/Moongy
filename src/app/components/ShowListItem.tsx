@@ -10,7 +10,7 @@ import Modal from '@mui/material/Modal';
 import { useSpring, animated } from '@react-spring/web';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setEpisodes } from '../redux/ShowsSlice';
+import { setEpisodes, setEpisodesLoading } from '../redux/ShowsSlice';
 import TvShowEpisodes from './TvShowEpisodes';
 
 
@@ -90,8 +90,10 @@ function ShowListItem(show: Props) {
   const dispatch = useDispatch();
 
   const handleGetAllEpisodes = async () => {
+    dispatch(setEpisodesLoading(true));
     const { data } = await axios.get(`http://api.tvmaze.com/shows/${show?.show?.show?.id}/episodes`);
     dispatch(setEpisodes(data));
+    dispatch(setEpisodesLoading(false));
   }
     
 
